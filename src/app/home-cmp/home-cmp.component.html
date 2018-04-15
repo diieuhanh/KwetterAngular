@@ -1,0 +1,56 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <h1>
+       Welcome to {{title}}.
+    </h1>
+    <ul class='nav navbar-nav' style="list-style: none">
+         <li style="display: inline-block;" [routerLinkActive]="['link-active']">
+             <a [routerLink]="['/profile']">
+             Profile
+             </a>
+         </li>
+         <li style="display: inline-block;" [routerLinkActive]="['link-active']">
+             <a [routerLink]="['/home-cmp']">
+             Home
+             </a>
+         </li>
+         <li style="float: right;" [routerLinkActive]="['link-active']">
+                 <button (click)="onLogout()">Logout</button>       
+         </li>
+     </ul>
+ </div>
+ 
+<div style="clear:both">
+  <form class="form-inline">
+    <div class="form-group">
+      <input type="search"
+             class="form-control"
+             placeholder="Enter search string"
+             #search>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="doSearch(search.value)">Search</button>
+  </form>
+  
+  <hr/>
+  
+  <div class="text-center">
+    <p class="lead" *ngIf="loading">Loading...</p>
+  </div>
+  <div style="float:left;">
+  <h3>Timeline</h3>
+        <ul>
+          <li *ngFor="let tweet of tweets">
+              {{ tweet.tweet }}
+              <br>
+              Date :{{ tweet.placedon }}
+          </li>
+      </ul>
+</div>
+  </div>
+<div style="float:right; clear: right">
+    <b>Your tweets:</b> {{tweets.length}}<br />
+    <b>Last Tweet:</b> {{tweets[tweets.length -1].tweet}}<br />
+    <b>Following </b>{{following.length}}<br />
+    <b>Followers</b> {{followers.length}}<br />
+
+</div>
